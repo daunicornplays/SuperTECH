@@ -58,6 +58,12 @@ commands:
   permission: supertech.players
  player:
   permission: supertech.players
+ randomfirework:
+  permission: supertech.firework
+ rfirework:
+  permission: supertech.firework
+ firework:
+  permission: supertech.firework
 
 permissions:
     supertech.*:
@@ -81,6 +87,7 @@ permissions:
       supertech.gamemode.Individual.*: true
       supertech.cooldown.override: true
       supertech.players: true
+      supertech.firework: true
     supertech.tpo.*:
      description: Gives you Permission to use the /tpo commands.
      children:
@@ -219,4 +226,6 @@ permissions:
     supertech.vanish.seeall:
      default: op
     supertech.vanish.vanishother:
+     default: op
+    supertech.firework:
      default: op

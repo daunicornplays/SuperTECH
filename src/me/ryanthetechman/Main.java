@@ -145,6 +145,10 @@ public class Main extends JavaPlugin implements Listener {
 		DoubleJump doublejump = new DoubleJump(this);
         Bacon bacon = new Bacon(this);
         PlayersHideAndShow hideandshow = new PlayersHideAndShow(this);
+        RandomFireworks randomfireworks = new RandomFireworks(this);
+        getCommand("randomfirework").setExecutor(randomfireworks);
+        getCommand("rfirework").setExecutor(randomfireworks);
+        getCommand("firework").setExecutor(randomfireworks);
         getCommand("players").setExecutor(hideandshow);
         getCommand("player").setExecutor(hideandshow);
         getCommand("bacon").setExecutor(bacon);
