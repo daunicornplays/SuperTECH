@@ -1,0 +1,222 @@
+name: SuperTech
+main: me.ryanthetechman.Main
+version: 0.3
+author: RyanTheTechMan
+
+commands:
+ supertech:
+  description: All commands for Super Tech.
+  permission: supertech.all
+ tpo:
+  description: Teleport to anyone HIDDENLY
+  permission: supertech.tpo
+ tpohere:
+  description: Teleport anyone to you HIDDENLY
+  permission: supertech.tpohere
+ skull:
+  description: Lets you get a skull of the Username you Type.
+  permission: supertech.skull
+ afk:
+  description:
+ unafk:
+  description:
+ spawn:
+  description:
+ setspawn:
+  description:
+  permission: supertech.setspawn
+ flyspeed:
+  description:
+  permission: supertech.setflyspeed
+ fspeed:
+  description:
+  permission: supertech.setflyspeed
+ walkspeed:
+  description:
+  permission: supertech.setwalkspeed
+ wspeed:
+  description:
+  permission: supertech.setwalkspeed
+ gm:
+  description:
+  permission: supertech.gamemode
+ gmc:
+  description:
+  permission: supertech.gamemode.Individual.GMC
+ gms:
+  description:
+  permission: supertech.gamemode.Individual.GMS
+ gma:
+  description:
+  permission: supertech.gamemode.Individual.GMA
+ gmsp:
+  description:
+  permission: supertech.gamemode.Individual.GMSP
+ bacon:
+  description:
+ players:
+  permission: supertech.players
+ player:
+  permission: supertech.players
+
+permissions:
+    supertech.*:
+     description: This gives you access to everything in RyanTheTechMan's Custom Plugin!
+     children:
+      supertech.tpo: true
+      supertech.tpohere: true
+      supertech.doublejump: true
+      supertech.CreateJumpPads: true
+      supertech.JumpPads: true
+      supertech.BarrierFun: true
+      supertech.HomingFireball: true
+      supertech.staffchat: true
+      supertech.setspawn: true
+      supertech.spawn: true
+      supertech.flyspeed.*: true
+      supertech.WalkSpeed.*: true
+      supertech.setwalkspeed.*: true
+      supertech.setflyspeed.*: true
+      supertech.gamemode: true
+      supertech.gamemode.Individual.*: true
+      supertech.cooldown.override: true
+      supertech.players: true
+    supertech.tpo.*:
+     description: Gives you Permission to use the /tpo commands.
+     children:
+      supertech.tpo: true
+      supertech.tpohere: true
+    supertech.JumpPads.*:
+     description: Gives you Permission to use the JumpPad Perms.
+     children:
+      supertech.JumpPads: true
+      supertech.CreateJumpPads: true
+    supertech.spawn.*:
+     description: Gives you Permission to use the Spawn Perms.
+     children:
+      supertech.spawn: true
+      supertech.setspawn: true
+    supertech.tpo:
+     description: Gives you Permission to use the /tpo command.
+     default: op
+    supertech.tpohere:
+     description: Gives you Permission to use the /tpohere command.
+     default: op
+    supertech.doublejump:
+     description: Gives you Permission to Double Jump!
+     default: op
+    supertech.CreateJumpPads:
+     description: Gives you Permission to Create Jump Pads.
+     default: op
+    supertech.JumpPads:
+     description: Gives you Permission to Use Jump Pads.
+     default: op
+    supertech.HomingFireball:
+     description: Gives you Permission to Spawn Homing Fireballs by Right Clicking a Blaze Rod!
+     default: op
+    supertech.BarrierFun:
+     description: Gives you Permission to Spawn Fireballs by Right Clicking a Barrier!
+     default: op
+    supertech.staffchat:
+     description: Gives you Permission to Talk To Staff Useing the '@' Sign Before Chatting.
+     default: op
+    supertech.staffchat.see:
+     description: Gives you Permission to see Staff Chat.
+     default: op
+    supertech.setspawn:
+     default: op
+    supertech.spawn:
+     default: op
+    supertech.setflyspeed:
+     default: op
+    supertech.flyspeed.*:
+     default: op
+     children:
+      supertech.flyspeed.10: true
+      supertech.flyspeed.9: true
+      supertech.flyspeed.8: true
+      supertech.flyspeed.7: true
+      supertech.flyspeed.6: true
+      supertech.flyspeed.5: true
+      supertech.flyspeed.4: true
+      supertech.flyspeed.3: true
+      supertech.flyspeed.2: true
+    supertech.setwalkspeed:
+     default: op
+    supertech.WalkSpeed.*:
+     default: op
+     children:
+      supertech.walkspeed.10: true
+      supertech.walkspeed.9: true
+      supertech.walkspeed.8: true
+      supertech.walkspeed.7: true
+      supertech.walkspeed.6: true
+      supertech.walkspeed.5: true
+      supertech.walkspeed.4: true
+      supertech.walkspeed.3: true
+      supertech.walkspeed.2: true
+    supertech.walkspeed.10:
+     default: op
+    supertech.walkspeed.9:
+     default: op
+    supertech.walkspeed.8:
+     default: op
+    supertech.walkspeed.7:
+     default: op
+    supertech.walkspeed.6:
+     default: op
+    supertech.walkspeed.5:
+     default: op
+    supertech.walkspeed.4:
+     default: op
+    supertech.walkspeed.3:
+     default: op
+    supertech.walkspeed.2:
+     default: op
+    supertech.flyspeed.10:
+     default: op
+    supertech.flyspeed.9:
+     default: op
+    supertech.flyspeed.8:
+     default: op
+    supertech.flyspeed.7:
+     default: op
+    supertech.flyspeed.6:
+     default: op
+    supertech.flyspeed.5:
+     default: op
+    supertech.flyspeed.4:
+     default: op
+    supertech.flyspeed.3:
+     default: op
+    supertech.flyspeed.2:
+     default: op
+    supertech.gamemode:
+     default: op
+    supertech.gamemode.Individual.*:
+     default: op
+     children:
+      supertech.gamemode.Individual.GMC: true
+      supertech.gamemode.Individual.GMS: true
+      supertech.gamemode.Individual.GMA: true
+      supertech.gamemode.Individual.GMSP: true
+    supertech.gamemode.Individual.GMC:
+     default: op
+    supertech.gamemode.Individual.GMS:
+     default: op
+    supertech.gamemode.Individual.GMA:
+     default: op
+    supertech.gamemode.Individual.GMSP:
+     default: op
+    supertech.cooldown.override:
+     default: op
+    supertech.players:
+     default: op
+    supertech.vanish.seeall:
+     default: op
+    supertech.vanish.list:
+     default: op
+    supertech.vanish.seeall:
+     default: op
+    supertech.vanish.vanishother:
+     default: op

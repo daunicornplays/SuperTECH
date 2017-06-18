@@ -1,0 +1,11 @@
+FlySpeed:
+ Enabled: true
+WalkSpeed:
+ Enabled: true
+EasyGamemodes:
+ Enabled: true
+ Individual:
+  CreativeEnabled: true
+  AdventureEnabled: true
+  SpectatorEnabled: true
+  SurvivalEnabled: true
