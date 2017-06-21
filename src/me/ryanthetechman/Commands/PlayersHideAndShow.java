@@ -23,11 +23,39 @@ public class PlayersHideAndShow implements CommandExecutor, Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
         Player p = (Player) sender;
         if(sender instanceof Player){
-            if(args[0].equalsIgnoreCase("hide")){
-                hideAllPlayers(p);
-            }
-            else if(args[0].equalsIgnoreCase("show")){
-                showAllPlayers(p);
+            if(args[0].equalsIgnoreCase("hide") || args[0].equalsIgnoreCase("show")) {
+                if(args[0].equalsIgnoreCase("show")){
+                    if(plugin.hideandshow.getConfig().getString("showPlayersFor." + p.getName()) == null || plugin.hideandshow.getConfig().getString("showPlayersFor." + p.getName()) == ""){
+                        plugin.hideandshow.getConfig().set("showPlayersFor." + p.getName(), true);
+                        plugin.hideandshow.saveConfig();
+                        showAllPlayers(p);
+                    }
+                    if(plugin.hideandshow.getConfig().getBoolean("showPlayersFor." + p.getName())) {
+                        p.sendMessage(RED + "You All Ready Have All Players Shown!");
+                    }
+                    else {
+                        plugin.hideandshow.getConfig().set("showPlayersFor." + p.getName(), true);
+                        plugin.hideandshow.saveConfig();
+                        showAllPlayers(p);
+                    }
+                }
+                if(args[0].equalsIgnoreCase("hide")){
+                    if(plugin.hideandshow.getConfig().getString("showPlayersFor." + p.getName()) == null || plugin.hideandshow.getConfig().getString("showPlayersFor." + p.getName()) == ""){
+                        plugin.hideandshow.getConfig().set("showPlayersFor." + p.getName(), false);
+                        plugin.hideandshow.saveConfig();
+                        hideAllPlayers(p);
+                    }
+                    if(!(plugin.hideandshow.getConfig().getBoolean("showPlayersFor." + p.getName()))) {
+                        p.sendMessage(RED + "You All Ready Have All Players Hidden!");
+                    }
+
+                    else{
+                        plugin.hideandshow.getConfig().set("showPlayersFor." + p.getName(), false);
+                        plugin.hideandshow.saveConfig();
+                        hideAllPlayers(p);
+                    }
+                }
+                return true;
             }
             else{
                 p.sendMessage(RED+ args[0] + " Is Not Something You Can Do!");
@@ -38,7 +66,6 @@ public class PlayersHideAndShow implements CommandExecutor, Listener {
             p.sendMessage(RED + "You Must Be A Player To Run This Command!");
             return false;
         }
-return false;
     }
 
     public void hideAllPlayers(Player player){

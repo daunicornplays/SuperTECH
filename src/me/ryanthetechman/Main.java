@@ -5,12 +5,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import me.ryanthetechman.BanGUI.BanGuiMain;
+import me.ryanthetechman.Chat.AntiMemes.BlockMemes;
 import me.ryanthetechman.Commands.*;
 import me.ryanthetechman.Commands.EasyGamemodes.GamemodeChangerALL;
 import me.ryanthetechman.Commands.EasyGamemodes.Individual.GMA;
 import me.ryanthetechman.Commands.EasyGamemodes.Individual.GMC;
 import me.ryanthetechman.Commands.EasyGamemodes.Individual.GMS;
 import me.ryanthetechman.Commands.EasyGamemodes.Individual.GMSP;
+import me.ryanthetechman.Commands.echest;
 import me.ryanthetechman.Commands.Movement.FlySpeed;
 import me.ryanthetechman.Commands.Movement.WalkSpeed;
 import me.ryanthetechman.Commands.Spawn.SetSpawn;
@@ -35,11 +37,14 @@ public class Main extends JavaPlugin implements Listener {
 
 
     public PluginConfig spawn = new PluginConfig(this, "spawn", false);
+    public PluginConfig teleport = new PluginConfig(this, "teleport", false);
     public PluginConfig blockbreak = new PluginConfig(this, "blockbreak", false);
+    public PluginConfig hideandshow = new PluginConfig(this, "hideandshow", false);
     public PluginConfig doublejump = new PluginConfig(this, "doublejump", false);
     public PluginConfig movement = new PluginConfig(this, "movement", false);
 	public PluginConfig config = new PluginConfig(this, "config", true);
 	public PluginConfig messages = new PluginConfig(this, "messages", true);
+
     @Override
     public void onDisable(){
         messages.saveConfig();
@@ -52,7 +57,14 @@ public class Main extends JavaPlugin implements Listener {
         doublejump.reloadConfig();
 		movement.saveConfig();
 		movement.reloadConfig();
+        hideandshow.saveConfig();
+        hideandshow.reloadConfig();
+        blockbreak.saveConfig();
+        blockbreak.reloadConfig();
+        teleport.saveConfig();
+        teleport.reloadConfig();
     }
+
     @Override
 	public void onEnable() {
         messages.reloadConfig();
@@ -146,6 +158,19 @@ public class Main extends JavaPlugin implements Listener {
         Bacon bacon = new Bacon(this);
         PlayersHideAndShow hideandshow = new PlayersHideAndShow(this);
         RandomFireworks randomfireworks = new RandomFireworks(this);
+        echest echest = new echest(this);
+        workbench workbench = new workbench(this);
+        FakeLogin fakelogin = new FakeLogin(this);
+        BlockDenied blockDenied = new BlockDenied(this);
+        SmiteBow smitebow = new SmiteBow(this);
+        //BlockMemes blockmemes = new BlockMemes(this);
+        Ping ping = new Ping(this);
+        getCommand("ping").setExecutor(ping);
+        getCommand("echest").setExecutor(echest);
+        getCommand("workbench").setExecutor(workbench);
+        getCommand("wbench").setExecutor(workbench);
+        getCommand("enderchest").setExecutor(echest);
+        getCommand("fake").setExecutor(fakelogin);
         getCommand("randomfirework").setExecutor(randomfireworks);
         getCommand("rfirework").setExecutor(randomfireworks);
         getCommand("firework").setExecutor(randomfireworks);
@@ -175,6 +200,9 @@ public class Main extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(spawn, this);
 		getServer().getPluginManager().registerEvents(setspawn, this);
         getServer().getPluginManager().registerEvents(hideandshow, this);
+        getServer().getPluginManager().registerEvents(blockDenied, this);
+        getServer().getPluginManager().registerEvents(smitebow, this);
+       // getServer().getPluginManager().registerEvents(blockmemes, this);
 	}
 
 	private void TabCompleter() {

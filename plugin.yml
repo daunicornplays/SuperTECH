@@ -64,6 +64,18 @@ commands:
   permission: supertech.firework
  firework:
   permission: supertech.firework
+ fake:
+  permission: supertech.fake.*
+ echest:
+  permission: supertech.echest
+ enderchest:
+  permission: supertech.echest
+ workbench:
+  permission: supertech.workbench
+ wbench:
+  permission: supertech.workbench
+ ping:
+  description:
 
 permissions:
     supertech.*:
@@ -88,6 +100,9 @@ permissions:
       supertech.cooldown.override: true
       supertech.players: true
       supertech.firework: true
+      supertech.fake.*: true
+      supertech.blocks.break: true
+      supertech.smite.bow: true
     supertech.tpo.*:
      description: Gives you Permission to use the /tpo commands.
      children:
@@ -228,4 +243,22 @@ permissions:
     supertech.vanish.vanishother:
      default: op
     supertech.firework:
+     default: op
+    supertech.fake.*:
+     default: op
+    supertech.fake.join:
+     default: op
+    supertech.fake.leave:
+     default: op
+    supertech.echest:
+     default: op
+    supertech.echest.other:
+     default: op
+    supertech.workbench:
+     default: op
+    supertech.workbench.other:
+     default: op
+    supertech.blocks.break:
+     default: op
+    supertech.smite.bow:
      default: op

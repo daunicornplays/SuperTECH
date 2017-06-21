@@ -79,6 +79,7 @@ public class SuperTech implements CommandExecutor {
                 plugin.movement.reloadConfig();
                 plugin.messages.reloadConfig();
                 plugin.config.reloadConfig();
+                plugin.hideandshow.reloadConfig();
                 if (!(plugin.config.getConfig().getBoolean("FlySpeed.Enabled"))) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.setFlySpeed(1 / 10.0F);
@@ -113,6 +114,11 @@ public class SuperTech implements CommandExecutor {
                     p.sendMessage(GREEN + "You Have Reloaded The Messages Config!");
                     return true;
                 }
+                if (args[1].equalsIgnoreCase("hideandshow")) {
+                    plugin.hideandshow.reloadConfig();
+                    p.sendMessage(GREEN + "You Have Reloaded The HideAndShow Config!");
+                    return true;
+                }
 
                 else {
                     p.sendMessage(RED + "That is Not a Valid Name For a Config in Super Tech!");
@@ -122,6 +128,7 @@ public class SuperTech implements CommandExecutor {
                     new FancyMessage(GOLD + "DoubleJump").suggest("/supertech reload DoubleJump").send(sender);
                     new FancyMessage(GOLD + "Movement").suggest("/supertech reload Movement").send(sender);
                     new FancyMessage(GOLD + "Messages").suggest("/supertech reload Messages").send(sender);
+                    new FancyMessage(GOLD + "HideAndShow").suggest("/supertech reload HideAndShow").send(sender);
                     return true;
                 }
             }
