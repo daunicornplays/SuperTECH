@@ -6,11 +6,17 @@ import mkremins.fanciful.FancyMessage;
 import static org.bukkit.ChatColor.*;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
 
 public class SuperTech implements CommandExecutor {
     String s2;
@@ -134,6 +140,31 @@ public class SuperTech implements CommandExecutor {
             }
 
 
+        }
+        if(args[0].equalsIgnoreCase("give")){
+            if (args.length == 1){
+
+            }
+
+            if (args.length == 2){
+                if(args[1].equalsIgnoreCase("LightningBow")){
+                    ItemStack lBow = new ItemStack(Material.BOW, 1);
+                    ItemMeta lBowMeta = lBow.getItemMeta();
+                    lBowMeta.setDisplayName(ChatColor.AQUA + "Lightning Bow");
+                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Shoot a player 20+ blocks away", ChatColor.GRAY + "to strike them with lightning!" }));
+
+                    lBow.setItemMeta(lBowMeta);
+                    if (p.hasPermission("supertech.give.lightningbow"))
+                    {
+                        p.getInventory().addItem(new ItemStack[] { lBow });
+                        p.sendMessage(ChatColor.AQUA + "You have been given a Lightning Bow");
+                    }
+
+                    else {
+                        p.sendMessage(ChatColor.RED + "I'm not sure what a " + "\"" + args[0] + "\"" + " is.");
+                    }
+                }
+            }
         }
         return false;
     }

@@ -50,14 +50,11 @@ public class SmiteBow implements Listener{
 
         }
     }
-    public interface Entity{
-
-    }
 
     @EventHandler
     public void onSnowballHit(ProjectileHitEvent event)
     {
-        if(event.getEntity(Snowball)){
+
         BlockIterator iterator = new BlockIterator(event.getEntity().getWorld(), event.getEntity().getLocation().toVector(), event.getEntity().getVelocity().normalize(), 0.0D, 4);
         Block hitBlock = null;
         while (iterator.hasNext())
@@ -72,7 +69,6 @@ public class SmiteBow implements Listener{
         if (player.hasPermission("supertech.smite.bow")) {
             hitBlock.getWorld().strikeLightning(hitBlock.getLocation());
         }
-    }
-    else{}
+
     }
 }
