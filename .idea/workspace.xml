@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4e36bb6-a324-4865-8fa6-f179e13d46cc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Chat/AntiMemes/BlockMemes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/FakeLogin.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Ping.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Smite.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/echest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/workbench.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Listener/SmiteBow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Teleport/BlockTester.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/BlockDenied.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/BlockDenied.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/PlayersHideAndShow.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/PlayersHideAndShow.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/SetSpawn.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/SetSpawn.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/Spawn$1.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/Spawn$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/Spawn.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/Spawn/Spawn.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/SuperTech.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Commands/SuperTech.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Main.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/TabCompleters/SuperTechCompleter.class" afterPath="$PROJECT_DIR$/out/production/Super TECH Plugin/me/ryanthetechman/TabCompleters/SuperTechCompleter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plugin.yml" afterPath="$PROJECT_DIR$/plugin.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/BlockDenied.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/BlockDenied.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/PlayersHideAndShow.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/PlayersHideAndShow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Spawn/SetSpawn.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Spawn/SetSpawn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Spawn/Spawn.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/Spawn/Spawn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/SuperTech.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Commands/SuperTech.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Main.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/TabCompleters/SuperTechCompleter.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/TabCompleters/SuperTechCompleter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/me/ryanthetechman/Listener/SmiteBow.java" afterPath="$PROJECT_DIR$/src/me/ryanthetechman/Listener/SmiteBow.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,11 +64,11 @@
       <file leaf-file-name="SmiteBow.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/me/ryanthetechman/Listener/SmiteBow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+            <state relative-caret-position="538">
+              <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#717#749#0" expanded="true" />
+                <element signature="e#600#632#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -199,7 +174,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="-1928" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -806,7 +781,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1248,11 +1223,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/me/ryanthetechman/Listener/SmiteBow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="63" column="23" lean-forward="false" selection-start-line="63" selection-start-column="23" selection-end-line="63" selection-end-column="23" />
+        <state relative-caret-position="538">
+          <caret line="48" column="18" lean-forward="true" selection-start-line="48" selection-start-column="18" selection-end-line="48" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#717#749#0" expanded="true" />
+            <element signature="e#600#632#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -15,9 +15,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.BlockIterator;
 @SuppressWarnings("deprecation")
 public class SmiteBow implements Listener{
@@ -27,11 +24,6 @@ public class SmiteBow implements Listener{
     public SmiteBow(Main plugin) {
         this.plugin = plugin;
     }
-    private Scoreboard board;
-    private Objective o;
-    private Score s;
-
-
 
     @EventHandler
     public void onBowFire(EntityShootBowEvent event)
@@ -51,9 +43,6 @@ public class SmiteBow implements Listener{
                     event.setCancelled(true);
                     (player.launchProjectile(Snowball.class)).setVelocity(event.getProjectile().getVelocity().multiply(1.5D));
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
-                    board = Bukkit.getServer().getScoreboardManager().getNewScoreboard();
-                    o = board.registerNewObjective("Snowball","dummy");
-                    s = o.getScore(EntityType);
 
                 }
                 else
