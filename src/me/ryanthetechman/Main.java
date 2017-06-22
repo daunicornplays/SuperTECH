@@ -42,6 +42,7 @@ public class Main extends JavaPlugin implements Listener {
     public PluginConfig hideandshow = new PluginConfig(this, "hideandshow", false);
     public PluginConfig doublejump = new PluginConfig(this, "doublejump", false);
     public PluginConfig movement = new PluginConfig(this, "movement", false);
+    public PluginConfig jumppads = new PluginConfig(this, "jumppads", false);
 	public PluginConfig config = new PluginConfig(this, "config", true);
 	public PluginConfig messages = new PluginConfig(this, "messages", true);
 
@@ -63,6 +64,8 @@ public class Main extends JavaPlugin implements Listener {
         blockbreak.reloadConfig();
         teleport.saveConfig();
         teleport.reloadConfig();
+        jumppads.saveConfig();
+        jumppads.reloadConfig();
     }
 
     @Override
@@ -89,6 +92,19 @@ public class Main extends JavaPlugin implements Listener {
         Movement();
         SpawnSetUp();
         BlockBreakSetup();
+        JumpPadsSetup();
+    }
+
+    private void JumpPadsSetup() {
+        if(jumppads.getConfig().getString("BlockToUse") == null || jumppads.getConfig().getString("BlockToUse") == ""){
+            jumppads.getConfig().set("BlockToUse", "REDSTONE_BLOCK");
+        }
+        if(jumppads.getConfig().getString("Activator.Normal") == null || jumppads.getConfig().getString("Activator.Normal") == ""){
+            jumppads.getConfig().set("Activator.Normal", "STONE_PLATE");
+        }
+        if(jumppads.getConfig().getString("Activator.Boosted") == null || jumppads.getConfig().getString("Activator.Boosted") == ""){
+            jumppads.getConfig().set("Activator.Boosted", "GOLD_PLATE");
+        }
     }
 
     private void BlockBreakSetup() {
@@ -166,6 +182,7 @@ public class Main extends JavaPlugin implements Listener {
         //BlockMemes blockmemes = new BlockMemes(this);
         Ping ping = new Ping(this);
         getCommand("ping").setExecutor(ping);
+        getCommand("toggleblockbreak").setExecutor(blockDenied);
         getCommand("echest").setExecutor(echest);
         getCommand("workbench").setExecutor(workbench);
         getCommand("wbench").setExecutor(workbench);

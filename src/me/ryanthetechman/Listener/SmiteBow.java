@@ -1,21 +1,21 @@
 package me.ryanthetechman.Listener;
 
 import me.ryanthetechman.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.util.BlockIterator;
+
+import java.util.HashMap;
+import java.util.Random;
+
 @SuppressWarnings("deprecation")
 public class SmiteBow implements Listener{
 
@@ -24,35 +24,32 @@ public class SmiteBow implements Listener{
     public SmiteBow(Main plugin) {
         this.plugin = plugin;
     }
+    HashMap<String, Integer> lBowArrows = new HashMap();
+    HashMap<String, Location> shooterLoc = new HashMap();
 
     @EventHandler
-    public void onBowFire(EntityShootBowEvent event)
+    public void onLaunch(ProjectileLaunchEvent e)
     {
-
-        if ((event.getEntity() instanceof Player))
+        if ((e.getEntity() instanceof Arrow))
         {
-            Player player = (Player)event.getEntity();
-            if (!player.hasPermission("supertech.smite.bow"))
+            Arrow a = (Arrow)e.getEntity();
+            if ((a.getShooter() instanceof Player))
             {
-                player.sendMessage(ChatColor.RED + "You don't have permission to do that!");
-                event.setCancelled(true);
-                return;
-            }
-                if (event.getBow().getEnchantmentLevel(Enchantment.ARROW_FIRE) == 52)
-                {
-                    event.setCancelled(true);
-                    (player.launchProjectile(Snowball.class)).setVelocity(event.getProjectile().getVelocity().multiply(1.5D));
-                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
-
+                Location l = ((Player)a.getShooter()).getLocation();
+                if ((((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName() != null) &&
+                        (((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.AQUA + "Lightning Bow"))) {
+                    lBowArrows.put(a.getShooter().toString(), Integer.valueOf(a.getEntityId()));
+                    shooterLoc.put(a.getShooter().toString(), l);
                 }
-                else
-                {}
-
-        }
-    }
+                else{
+                    lBowArrows.clear();
+                    shooterLoc.clear();
+                }
+            }
+        }}
 
     @EventHandler
-    public void onSnowballHit(ProjectileHitEvent event)
+    public void onHit(ProjectileHitEvent event)
     {
 
         BlockIterator iterator = new BlockIterator(event.getEntity().getWorld(), event.getEntity().getLocation().toVector(), event.getEntity().getVelocity().normalize(), 0.0D, 4);
@@ -64,11 +61,20 @@ public class SmiteBow implements Listener{
                 break;
             }
         }
-        hitBlock.getWorld().playEffect(hitBlock.getLocation(), Effect.STEP_SOUND, hitBlock.getTypeId());
+
         Player player = (Player)event.getEntity().getShooter();
         if (player.hasPermission("supertech.smite.bow")) {
+            Arrow a = (Arrow)event.getEntity();
+            if (shooterLoc.containsKey(a.getShooter().toString())) {
             hitBlock.getWorld().strikeLightning(hitBlock.getLocation());
+                hitBlock.getWorld().playEffect(hitBlock.getLocation(), Effect.ENDERDRAGON_SHOOT, hitBlock.getTypeId());
+                event.getEntity().remove();
+        }
+            else{
+                lBowArrows.clear();
+                shooterLoc.clear();
+            }
         }
 
     }
-}
+    }

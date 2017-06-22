@@ -35,6 +35,23 @@ public class onChat implements Listener {
 						return;
 					}
 					e.getMessage().replaceFirst("@", "");
+                    char c = e.getMessage().charAt(1);
+                    String text = e.getMessage().substring(2);
+                    String ch = String.valueOf(c);
+                    String message = String.valueOf(String.valueOf(ch.toUpperCase())) + text;
+                    String msg = "";
+                    int i = 0;
+                    while (i != message.length())
+                    {
+                        boolean bla = false;
+                        if ((i != 0) && (message.charAt(i - 1) == ' ') && (message.charAt(i) == 'i') && (message.charAt(i + 1) == ' ')) {
+                            bla = true;
+                        }
+                        msg = String.valueOf(String.valueOf(msg)) + message.charAt(i);
+                        i++;
+                    }
+                    e.setMessage(msg);
+
 					e.setCancelled(true);
 					new FancyMessage(GOLD + "StaffChat: ").then(AQUA + e.getMessage().replaceFirst("@", ""))
 							.tooltip(GREEN + e.getPlayer().getName() + " \n" + YELLOW + BOLD + "X: " + RESET + YELLOW
@@ -56,5 +73,26 @@ public class onChat implements Listener {
 			e.setMessage(e.getMessage().replace("[item]", e.getPlayer().getItemInHand().getAmount() + "x " + item)
 					.replace("[i]", e.getPlayer().getItemInHand().getAmount() + "x " + item));
 		}
+	}
+
+	@EventHandler
+	public void firstLetterCaps(AsyncPlayerChatEvent e)
+	{
+		char c = e.getMessage().charAt(0);
+		String text = e.getMessage().substring(1);
+		String ch = String.valueOf(c);
+		String message = String.valueOf(String.valueOf(ch.toUpperCase())) + text;
+		String msg = "";
+		int i = 0;
+		while (i != message.length())
+		{
+			boolean bla = false;
+			if ((i != 0) && (message.charAt(i - 1) == ' ') && (message.charAt(i) == 'i') && (message.charAt(i + 1) == ' ')) {
+				bla = true;
+			}
+			msg = String.valueOf(String.valueOf(msg)) + message.charAt(i);
+			i++;
+		}
+		e.setMessage(msg);
 	}
 }

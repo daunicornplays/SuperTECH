@@ -18,7 +18,7 @@ public class SuperTechCompleter implements TabCompleter {
 
 	@Override
 	public List<String> onTabComplete(CommandSender commandSender, Command command, String cl, String[] args) {
-		List<String> a1 = Arrays.asList("reload", "config"); // to add more, add "1", "2","3" for more list
+		List<String> a1 = Arrays.asList("reload", "config", "give"); // to add more, add "1", "2","3" for more list
 		List<String> a2 = Arrays.asList("main", "messages", "doublejump", "movement", "hideandshow");
 		// /\ Copy and paste that but change a few things
 		// /e the name and what gets returned so if you had /supertech msg send

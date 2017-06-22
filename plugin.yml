@@ -76,6 +76,10 @@ commands:
   permission: supertech.workbench
  ping:
   description:
+ smite:
+  description:
+ toggleblockbreak:
+  description:
 
 permissions:
     supertech.*:

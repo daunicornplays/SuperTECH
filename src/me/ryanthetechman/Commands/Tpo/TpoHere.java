@@ -21,27 +21,35 @@ public class TpoHere implements CommandExecutor, Listener {
 					p.sendMessage(ChatColor.RED + "/tpohere [Player Name] <Player Name>");
 				}
 				if (length == 1) {
-					boolean playerFound = false;
-					Iterator var8 = Bukkit.getServer().getOnlinePlayers().iterator();
-					while (var8.hasNext()) {
-						Player reciver = (Player) var8.next();
-						if (reciver.getName().equalsIgnoreCase(args[0])) {
-							reciver.teleport(p.getLocation());
-							p.sendMessage(ChatColor.GREEN + "You have teleported " + ChatColor.GOLD + args[0]
-									+ ChatColor.GREEN + " To You!");
-							playerFound = true;
-							break;
-						}
-					}
-					if (!playerFound) {
-						p.sendMessage(ChatColor.RED + "The player " + args[0] + " was not found!");
-					}
-				} else {
+                    if (args[0].equalsIgnoreCase("all")) {
+                        for (Player pl : Bukkit.getOnlinePlayers()) {
+                            pl.teleport(p.getLocation());
+                        }
+                    }
+                    else
+                        {
+                    boolean playerFound = false;
+                    Iterator var8 = Bukkit.getServer().getOnlinePlayers().iterator();
+                    while (var8.hasNext()) {
+                        Player reciver = (Player) var8.next();
+                        if (reciver.getName().equalsIgnoreCase(args[0])) {
+                            reciver.teleport(p.getLocation());
+                            p.sendMessage(ChatColor.GREEN + "You have teleported " + ChatColor.GOLD + args[0]
+                                    + ChatColor.GREEN + " To You!");
+                            playerFound = true;
+                            break;
+                        }
+                    }
+                    if (!playerFound) {
+                        p.sendMessage(ChatColor.RED + "The player " + args[0] + " was not found!");
+                    }
+                }
+				}
+				else {
 					p.sendMessage(ChatColor.RED + "Incorrect arguments");
 				}
 				return true;
 			}
-			p.sendMessage(ChatColor.RED + "Incrroct arguments");
 		}
 		return false;
 	}

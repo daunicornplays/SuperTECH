@@ -12,11 +12,13 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class SuperTech implements CommandExecutor {
     String s2;
@@ -71,10 +73,12 @@ public class SuperTech implements CommandExecutor {
                             GOLD + "    Z: " + GREEN + plugin.spawn.getConfig().getString("Spawn.Z") + "\n" +
                             GOLD + "Particles: " + GREEN + plugin.spawn.getConfig().getString("Spawn.Particles")).send(sender);
             new FancyMessage(GOLD + "Movement").tooltip(
-                    GOLD + "FlySpeedEnabled: " + GREEN + plugin.config.getConfig().getString("FlySpeed.Enabled") + "\n" +
+                    GOLD + "FlySpeedEnabled: " + GREEN + plugin.movement.getConfig().getString("FlySpeed.Enabled") + "\n" +
                             GOLD + "Your FlySpeed: " + GREEN + p.getFlySpeed() * 10.0F + "\n\n" +
-                            GOLD + "WalkSpeedEnabled: " + GREEN + plugin.config.getConfig().getString("WalkSpeed.Enabled") + "\n" +
+                            GOLD + "WalkSpeedEnabled: " + GREEN + plugin.movement.getConfig().getString("WalkSpeed.Enabled") + "\n" +
                             GOLD + "Your WalkSpeed: " + GREEN + p.getWalkSpeed() * 10.0F).send(sender);
+            new FancyMessage(GOLD + "HideAndShow:").tooltip(
+                    GOLD + "PlayersShown: " + GREEN + plugin.hideandshow.getConfig().getString("showPlayersFor." + p.getName())).send(sender);
             return true;
         }
         if (args[0].equalsIgnoreCase("reload")) {
@@ -103,7 +107,7 @@ public class SuperTech implements CommandExecutor {
                 if (args[1].equalsIgnoreCase("main")) {
                     plugin.config.reloadConfig();
                     p.sendMessage(GREEN + "You Have Reloaded The Main Config!");
-                    return true;//read logs
+                    return true;
                 }
                 if (args[1].equalsIgnoreCase("doublejump")) {
                     plugin.doublejump.reloadConfig();
@@ -143,7 +147,7 @@ public class SuperTech implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("give")){
             if (args.length == 1){
-
+                p.sendMessage(ChatColor.RED + "Please Enter The Item Name\nEx: /supertech give [item]");
             }
 
             if (args.length == 2){
@@ -151,86 +155,75 @@ public class SuperTech implements CommandExecutor {
                     ItemStack lBow = new ItemStack(Material.BOW, 1);
                     ItemMeta lBowMeta = lBow.getItemMeta();
                     lBowMeta.setDisplayName(ChatColor.AQUA + "Lightning Bow");
-                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Shoot a player 20+ blocks away", ChatColor.GRAY + "to strike them with lightning!" }));
+                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Strike something with lightning!" }));
 
                     lBow.setItemMeta(lBowMeta);
                     if (p.hasPermission("supertech.give.lightningbow"))
                     {
                         p.getInventory().addItem(new ItemStack[] { lBow });
-                        p.sendMessage(ChatColor.AQUA + "You have been given a Lightning Bow");
+                        new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
+                                ChatColor.WHITE + " * 1 to " + p.getName()).tooltip(AQUA + "LightningBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:LightningBow").send(sender);
                     }
 
                     else {
-                        p.sendMessage(ChatColor.RED + "I'm not sure what a " + "\"" + args[0] + "\"" + " is.");
+                        p.sendMessage(ChatColor.WHITE + "There is no such item with name supertech:" + args[1].toLowerCase());
+                    }
+                }
+            }
+            if (args.length == 3){
+                if(args[2].matches("^-?\\d+$")){
+                    int args2 = Integer.parseInt(args[2]);
+                    ItemStack lBow = new ItemStack(Material.BOW, args2);
+                    ItemMeta lBowMeta = lBow.getItemMeta();
+                    lBowMeta.setDisplayName(ChatColor.AQUA + "Lightning Bow");
+                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Strike something with lightning!" }));
+
+                    lBow.setItemMeta(lBowMeta);
+                    if (p.hasPermission("supertech.give.lightningbow"))
+                    {
+                        p.getInventory().addItem(new ItemStack[] { lBow });
+                        new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
+                                ChatColor.WHITE + " * " + args2 +  " to " + p.getName()).tooltip(AQUA + "LightningBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:LightningBow").send(sender);
+                    }
+
+                    else {
+                        p.sendMessage(ChatColor.WHITE + "There is no such item with name supertech:" + args[1].toLowerCase());
+                    }
+                }
+                else if(args[1].equalsIgnoreCase("LightningBow")){
+                    boolean playerFound = false;
+                    Iterator findp = Bukkit.getServer().getOnlinePlayers().iterator();
+                    while (findp.hasNext()) {
+                        Player reciver = (Player) findp.next();
+                        if (reciver.getName().equalsIgnoreCase(args[2])) {
+                            ItemStack lBow = new ItemStack(Material.BOW, 1);
+                            ItemMeta lBowMeta = lBow.getItemMeta();
+                            lBowMeta.setDisplayName(ChatColor.AQUA + "Lightning Bow");
+                            lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Strike something with lightning!" }));
+
+                            lBow.setItemMeta(lBowMeta);
+                            if (p.hasPermission("supertech.give.lightningbow"))
+                            {
+                                reciver.getInventory().addItem(new ItemStack[] { lBow });
+                                new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
+                                        ChatColor.WHITE + " * 1 to " + p.getName()).tooltip(AQUA + "LightningBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:LightningBow").send(sender);
+                            }
+
+                            else {
+                                p.sendMessage(ChatColor.WHITE + "There is no such item with name supertech:" + args[1].toLowerCase());
+                            }
+                            playerFound = true;
+                            break;
+                        }
+                    }
+                    if (!playerFound) {
+                        p.sendMessage(RED + "The player " + args[2] + " was not found!");
+                        return false;
                     }
                 }
             }
         }
         return false;
-    }
-
-    private void DoubleJumpConfig(Player p) {
-		/*boolean DJBooleanOld = this.plugin.getConfig().getBoolean("DoubleJumpEnabled");
-		int DoubleJumpXOld = this.plugin.getConfig().getInt("DoubleJumpX");
-		int DoubleJumpYOld = this.plugin.getConfig().getInt("DoubleJumpY");
-		this.plugin.config.reloadConfig();
-		boolean DJBooleanNew = this.plugin.getConfig().getBoolean("DoubleJumpEnabled");
-		int DoubleJumpXNew = this.plugin.getConfig().getInt("DoubleJumpX");
-		int DoubleJumpYNew = this.plugin.getConfig().getInt("DoubleJumpY");
-		boolean DoubleJumpXIsNumber = true;
-		boolean DoubleJumpYIsNumber = true;
-		boolean changed = false;
-		boolean DJEnabled = false;
-		if (((!DJBooleanNew) && (DoubleJumpXOld != DoubleJumpXNew)) || (DoubleJumpYOld != DoubleJumpYNew)) {
-			p.sendMessage(ChatColor.GOLD + "DoubleJump is " + ChatColor.RED + "NOT " + ChatColor.GOLD + "Enabled!");
-		}
-		if (DoubleJumpXNew <= 0) {
-			p.sendMessage(ChatColor.GOLD + "DoubleJumpX = " + ChatColor.RED + " Invalid Number!" + ChatColor.GREEN
-					+ " Must be a Number Above 0!");
-			DoubleJumpXIsNumber = false;
-		}
-		if (DoubleJumpYNew <= 0) {
-			p.sendMessage(ChatColor.GOLD + "DoubleJumpY = " + ChatColor.RED + " Invalid Number!" + ChatColor.GREEN
-					+ " Must be a Number Above 0!");
-			DoubleJumpYIsNumber = false;
-		}
-		if (DJBooleanNew) {
-			DJEnabled = true;
-		} else {
-			DJEnabled = false;
-		}
-		if (DJBooleanOld != DJBooleanNew) {
-			if (DJEnabled) {
-				p.sendMessage(ChatColor.GOLD + "DoubleJump has been " + ChatColor.GREEN + "Enabled!");
-			} else {
-				p.sendMessage(ChatColor.GOLD + "DoubleJump has been " + ChatColor.RED + "Disabled!");
-			}
-			changed = true;
-		}
-		if (DoubleJumpXOld != DoubleJumpXNew) {
-			if (!DoubleJumpXIsNumber) {
-				p.sendMessage(ChatColor.GOLD + "DoubleJumpX = " + ChatColor.RED + "Invalid Number" + ChatColor.GOLD
-						+ " Changed To " + ChatColor.GREEN + DoubleJumpXNew);
-			} else {
-				p.sendMessage(ChatColor.GOLD + "DoubleJumpX = " + ChatColor.RED + DoubleJumpXOld + ChatColor.GOLD
-						+ " Changed To " + ChatColor.GREEN + DoubleJumpXNew);
-			}
-			changed = true;
-		}
-		if (DoubleJumpYOld != DoubleJumpYNew) {
-			if (!DoubleJumpYIsNumber) {
-				p.sendMessage(ChatColor.GOLD + "DoubleJumpY = " + ChatColor.RED + "Invalid Number" + ChatColor.GOLD
-						+ " Changed To " + ChatColor.GREEN + DoubleJumpYNew);
-			} else {
-				p.sendMessage(ChatColor.GOLD + "DoubleJumpY = " + ChatColor.RED + DoubleJumpYOld + ChatColor.GOLD
-						+ " Changed To " + ChatColor.GREEN + DoubleJumpYNew);
-			}
-			changed = true;
-		}
-		if (!changed) {
-			p.sendMessage(ChatColor.RED + "Nothing Changed!");
-		}
-		return;*/
     }
 
 
