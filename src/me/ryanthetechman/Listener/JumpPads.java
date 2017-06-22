@@ -4,6 +4,7 @@ import me.ryanthetechman.Main;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -39,31 +40,27 @@ public class JumpPads implements Listener {
 	public void onPlayerMove(PlayerMoveEvent e) {
 		isOnGold(e.getPlayer());
 		if (((e.getPlayer().hasPermission("supertech.all"))) || (e.getPlayer().hasPermission("supertech.JumpPads"))) {
-            String block = plugin.jumppads.getConfig().getString("BlockToUse");
-            String normal = plugin.jumppads.getConfig().getString("Activator.Normal");
-            String boosted = plugin.jumppads.getConfig().getString("Activator.Boosted");
-
-			if (e.getTo().getBlock().getRelative(0, 0, 0).equals(normal)
-					&& e.getTo().getBlock().getRelative(0, -1, 0).equals(block)
-					&& e.getTo().getBlock().getRelative(1, -1, 0).equals(block)
-					&& e.getTo().getBlock().getRelative(0, -1, -1).equals(block)
-					&& e.getTo().getBlock().getRelative(0, -1, 1).equals(block)
-					&& e.getTo().getBlock().getRelative(-1, -1, -1).equals(block)
-					&& e.getTo().getBlock().getRelative(1, -1, 1).equals(block)
-					&& e.getTo().getBlock().getRelative(-1, -1, 0).equals(block)) {
+			if (e.getTo().getBlock().getRelative(0, 0, 0).getType() == Material.STONE_PLATE
+					&& e.getTo().getBlock().getRelative(0, -1, 0).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(1, -1, 0).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(0, -1, -1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(0, -1, 1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(-1, -1, -1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(1, -1, 1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(-1, -1, 0).getType() == Material.REDSTONE_BLOCK) {
 				e.getPlayer().setVelocity(e.getPlayer().getLocation().getDirection().multiply(4));
 				e.getPlayer().setVelocity(
 						new Vector(e.getPlayer().getVelocity().getX(), 1.0D, e.getPlayer().getVelocity().getZ()));
 				jumpers.add(e.getPlayer());
 			}
-			if (isOnGold && e.getTo().getBlock().getRelative(0, 0, 0).equals(boosted)
-					&& e.getTo().getBlock().getRelative(0, -1, 0).equals(block)
-					&& e.getTo().getBlock().getRelative(1, -1, 0).equals(block)
-					&& e.getTo().getBlock().getRelative(0, -1, -1).equals(block)
-					&& e.getTo().getBlock().getRelative(0, -1, 1).equals(block)
-					&& e.getTo().getBlock().getRelative(-1, -1, -1).equals(block)
-					&& e.getTo().getBlock().getRelative(1, -1, 1).equals(block)
-					&& e.getTo().getBlock().getRelative(-1, -1, 0).equals(block)) {
+			if (isOnGold && e.getTo().getBlock().getRelative(0, 0, 0).getType() == Material.GOLD_PLATE
+					&& e.getTo().getBlock().getRelative(0, -1, 0).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(1, -1, 0).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(0, -1, -1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(0, -1, 1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(-1, -1, -1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(1, -1, 1).getType() == Material.REDSTONE_BLOCK
+					&& e.getTo().getBlock().getRelative(-1, -1, 0).getType() == Material.REDSTONE_BLOCK) {
 				e.getPlayer().setVelocity(e.getPlayer().getLocation().getDirection().multiply(5)); //
 				e.getPlayer().setVelocity(
 						new Vector(e.getPlayer().getVelocity().getX(), 3.0D, e.getPlayer().getVelocity().getZ()));

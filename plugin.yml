@@ -106,8 +106,8 @@ permissions:
       supertech.firework: true
       supertech.fake.*: true
       supertech.blocks.break: true
-      supertech.smite.bow: true
-      supertech.give.lightningbow: true
+      supertech.bow.*: true
+      supertech.give.*: true
     supertech.tpo.*:
      description: Gives you Permission to use the /tpo commands.
      children:
@@ -265,7 +265,26 @@ permissions:
      default: op
     supertech.blocks.break:
      default: op
-    supertech.smite.bow:
+    supertech.give.*:
+     default: op
+     children:
+      supertech.give.lightningbow: true
+      supertech.give.explodingbow: true
+      supertech.bow.ender: true
+    supertech.bow.*:
+     default: op
+     children:
+      supertech.bow.smite: true
+      supertech.bow.tnt: true
+    supertech.bow.smite:
      default: op
     supertech.give.lightningbow:
+     default: op
+    supertech.give.explodingbow:
+     default: op
+    supertech.give.enderbow:
+     default: op
+    supertech.bow.tnt:
+     default: op
+    supertech.bow.ender:
      default: op

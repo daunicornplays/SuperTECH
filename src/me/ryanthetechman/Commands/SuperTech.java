@@ -90,6 +90,8 @@ public class SuperTech implements CommandExecutor {
                 plugin.messages.reloadConfig();
                 plugin.config.reloadConfig();
                 plugin.hideandshow.reloadConfig();
+                plugin.jumppads.reloadConfig();
+                plugin.jumppads.reloadConfig();
                 if (!(plugin.config.getConfig().getBoolean("FlySpeed.Enabled"))) {
                     for (Player player : Bukkit.getOnlinePlayers()) {
                         player.setFlySpeed(1 / 10.0F);
@@ -163,6 +165,42 @@ public class SuperTech implements CommandExecutor {
                         p.getInventory().addItem(new ItemStack[] { lBow });
                         new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
                                 ChatColor.WHITE + " * 1 to " + p.getName()).tooltip(AQUA + "LightningBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:LightningBow").send(sender);
+                    }
+
+                    else {
+                        p.sendMessage(ChatColor.WHITE + "There is no such item with name supertech:" + args[1].toLowerCase());
+                    }
+                }
+                if(args[1].equalsIgnoreCase("TntBow")){
+                    ItemStack lBow = new ItemStack(Material.BOW, 1);
+                    ItemMeta lBowMeta = lBow.getItemMeta();
+                    lBowMeta.setDisplayName(ChatColor.RED + "Tnt Bow");
+                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Make Anything Explode!" }));
+
+                    lBow.setItemMeta(lBowMeta);
+                    if (p.hasPermission("supertech.give.explodingbow"))
+                    {
+                        p.getInventory().addItem(new ItemStack[] { lBow });
+                        new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
+                                ChatColor.WHITE + " * 1 to " + p.getName()).tooltip(AQUA + "TntBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:TntBow").send(sender);
+                    }
+
+                    else {
+                        p.sendMessage(ChatColor.WHITE + "There is no such item with name supertech:" + args[1].toLowerCase());
+                    }
+                }
+                if(args[1].equalsIgnoreCase("EnderBow")){
+                    ItemStack lBow = new ItemStack(Material.BOW, 1);
+                    ItemMeta lBowMeta = lBow.getItemMeta();
+                    lBowMeta.setDisplayName(ChatColor.LIGHT_PURPLE + "Ender Bow");
+                    lBowMeta.setLore(Arrays.asList(new String[] { ChatColor.GRAY + "Allows You To Teleport!" }));
+
+                    lBow.setItemMeta(lBowMeta);
+                    if (p.hasPermission("supertech.give.enderbow"))
+                    {
+                        p.getInventory().addItem(new ItemStack[] { lBow });
+                        new FancyMessage(WHITE + "Given " + ChatColor.AQUA + "[" + args[1].toLowerCase() + "]" +
+                                ChatColor.WHITE + " * 1 to " + p.getName()).tooltip(AQUA + "EnderBow " + WHITE + "(#0000)\n" + DARK_GRAY + "supertech:EnderBow").send(sender);
                     }
 
                     else {

@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import me.ryanthetechman.BanGUI.BanGuiMain;
-import me.ryanthetechman.Chat.AntiMemes.BlockMemes;
+import me.ryanthetechman.Bows.EnderBow;
+import me.ryanthetechman.Bows.SmiteBow;
+import me.ryanthetechman.Bows.TntBow;
 import me.ryanthetechman.Commands.*;
 import me.ryanthetechman.Commands.EasyGamemodes.GamemodeChangerALL;
 import me.ryanthetechman.Commands.EasyGamemodes.Individual.GMA;
@@ -97,13 +99,13 @@ public class Main extends JavaPlugin implements Listener {
 
     private void JumpPadsSetup() {
         if(jumppads.getConfig().getString("BlockToUse") == null || jumppads.getConfig().getString("BlockToUse") == ""){
-            jumppads.getConfig().set("BlockToUse", "REDSTONE_BLOCK");
+            jumppads.getConfig().set("BlockToUse", "Material.REDSTONE_BLOCK");
         }
         if(jumppads.getConfig().getString("Activator.Normal") == null || jumppads.getConfig().getString("Activator.Normal") == ""){
-            jumppads.getConfig().set("Activator.Normal", "STONE_PLATE");
+            jumppads.getConfig().set("Activator.Normal", "Material.STONE_PLATE");
         }
         if(jumppads.getConfig().getString("Activator.Boosted") == null || jumppads.getConfig().getString("Activator.Boosted") == ""){
-            jumppads.getConfig().set("Activator.Boosted", "GOLD_PLATE");
+            jumppads.getConfig().set("Activator.Boosted", "Material.GOLD_PLATE");
         }
     }
 
@@ -179,6 +181,8 @@ public class Main extends JavaPlugin implements Listener {
         FakeLogin fakelogin = new FakeLogin(this);
         BlockDenied blockDenied = new BlockDenied(this);
         SmiteBow smitebow = new SmiteBow(this);
+        TntBow tntbow = new TntBow(this);
+        EnderBow enderbow = new EnderBow(this);
         //BlockMemes blockmemes = new BlockMemes(this);
         Ping ping = new Ping(this);
         getCommand("ping").setExecutor(ping);
@@ -219,6 +223,8 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(hideandshow, this);
         getServer().getPluginManager().registerEvents(blockDenied, this);
         getServer().getPluginManager().registerEvents(smitebow, this);
+        getServer().getPluginManager().registerEvents(tntbow, this);
+        getServer().getPluginManager().registerEvents(enderbow, this);
        // getServer().getPluginManager().registerEvents(blockmemes, this);
 	}
 
