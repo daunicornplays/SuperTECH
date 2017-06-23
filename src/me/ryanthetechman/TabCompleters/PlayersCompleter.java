@@ -22,7 +22,7 @@ public class PlayersCompleter implements TabCompleter {
         List<String> a1 = Arrays.asList("show", "hide");
 
         List<String> clists = Lists.newArrayList();
-        if (cl.equalsIgnoreCase("players") || cl.equalsIgnoreCase("player")) {
+        if (cl.equalsIgnoreCase("players")) {
             if (args.length == 1) {
                 for (String a : a1) {
                     if (a.startsWith(args[0]))

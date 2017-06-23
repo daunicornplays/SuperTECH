@@ -5,6 +5,7 @@ author: RyanTheTechMan
 
 commands:
  supertech:
+  aliases: [st]
   description: All commands for Super Tech.
   permission: supertech.all
  tpo:
@@ -26,15 +27,11 @@ commands:
   description:
   permission: supertech.setspawn
  flyspeed:
-  description:
-  permission: supertech.setflyspeed
- fspeed:
+  aliases: [fspeed]
   description:
   permission: supertech.setflyspeed
  walkspeed:
-  description:
-  permission: supertech.setwalkspeed
- wspeed:
+  aliases: [wspeed]
   description:
   permission: supertech.setwalkspeed
  gm:
@@ -56,23 +53,16 @@ commands:
   description:
  players:
   permission: supertech.players
- player:
-  permission: supertech.players
  randomfirework:
-  permission: supertech.firework
- rfirework:
-  permission: supertech.firework
- firework:
+  aliases: [rfirework, firework]
   permission: supertech.firework
  fake:
   permission: supertech.fake.*
- echest:
-  permission: supertech.echest
  enderchest:
+  aliases: [echest]
   permission: supertech.echest
  workbench:
-  permission: supertech.workbench
- wbench:
+  aliases: [wbench, wb, craft]
   permission: supertech.workbench
  ping:
   description:

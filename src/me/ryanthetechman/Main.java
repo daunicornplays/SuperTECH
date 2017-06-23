@@ -196,7 +196,6 @@ public class Main extends JavaPlugin implements Listener {
         getCommand("rfirework").setExecutor(randomfireworks);
         getCommand("firework").setExecutor(randomfireworks);
         getCommand("players").setExecutor(hideandshow);
-        getCommand("player").setExecutor(hideandshow);
         getCommand("bacon").setExecutor(bacon);
         getCommand("gms").setExecutor(gms);
         getCommand("gma").setExecutor(gma);
@@ -212,6 +211,7 @@ public class Main extends JavaPlugin implements Listener {
 		getCommand("afk").setExecutor(afk);
 		getCommand("spawn").setExecutor(spawn);
 		getCommand("supertech").setExecutor(new SuperTech(this));
+		getCommand("st").setExecutor(new SuperTech(this));
 		getCommand("setspawn").setExecutor(new SetSpawn(this));
 		getServer().getPluginManager().registerEvents(doublejump, this);
         getServer().getPluginManager().registerEvents(tpo, this);

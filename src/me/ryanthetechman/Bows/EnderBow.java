@@ -27,7 +27,8 @@ public class EnderBow implements Listener {
     }
     HashMap<String, Integer> lBowArrows = new HashMap();
     HashMap<String, Location> shooterLoc = new HashMap();
-
+    Float plocP = null;
+    Float plocY = null;
     @EventHandler
     public void onLaunch(ProjectileLaunchEvent e)
     {
@@ -38,7 +39,7 @@ public class EnderBow implements Listener {
             {
                 Location l = ((Player)a.getShooter()).getLocation();
                 if ((((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName() != null) &&
-                        (((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.LIGHT_PURPLE + "Ender Bow"))) {
+                        (((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName().equals(""+ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "Ender Bow"))) {
 
                     lBowArrows.put(a.getShooter().toString(), Integer.valueOf(a.getEntityId()));
                     shooterLoc.put(a.getShooter().toString(), l);
@@ -68,7 +69,12 @@ public class EnderBow implements Listener {
         if (player.hasPermission("supertech.bow.ender")) {
             Arrow a = (Arrow)event.getEntity();
             if (shooterLoc.containsKey(a.getShooter().toString())) {
-                player.teleport(a.getLocation().add(0D, 1D, 0D));
+                Location aa = a.getLocation().add(0D, 1D, 0D);
+                plocP = ((Player) a.getShooter()).getLocation().getPitch();
+                plocY = ((Player) a.getShooter()).getLocation().getYaw();
+                aa.setPitch(plocP);
+                aa.setYaw(plocY);
+                player.teleport(aa);
                 event.getEntity().remove();
             }
             else{

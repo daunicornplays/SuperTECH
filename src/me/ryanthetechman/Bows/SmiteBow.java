@@ -37,7 +37,7 @@ public class SmiteBow implements Listener{
             {
                 Location l = ((Player)a.getShooter()).getLocation();
                 if ((((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName() != null) &&
-                        (((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName().equals(ChatColor.AQUA + "Lightning Bow"))) {
+                        (((Player)a.getShooter()).getItemInHand().getItemMeta().getDisplayName().equals(""+ChatColor.AQUA + ChatColor.BOLD + "Lightning Bow"))) {
                     lBowArrows.put(a.getShooter().toString(), Integer.valueOf(a.getEntityId()));
                     shooterLoc.put(a.getShooter().toString(), l);
                 }
